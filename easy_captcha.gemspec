@@ -5,20 +5,20 @@
 
 Gem::Specification.new do |s|
   s.name = %q{easy_captcha}
-  s.version = "0.0.0"
+  s.version = "0.1.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Marco Scholl"]
   s.date = %q{2010-09-04}
-  s.description = %q{A Captcha Implementation for Rails by RMagick}
+  s.description = %q{Captcha-Plugin for Rails. IMage generate based on rmagick}
   s.email = %q{develop@marco-scholl.de}
   s.extra_rdoc_files = [
-    "README"
+    "README.rdoc"
   ]
   s.files = [
     ".gitignore",
      "MIT-LICENSE",
-     "README",
+     "README.rdoc",
      "Rakefile",
      "VERSION",
      "easy_captcha.gemspec",
@@ -26,7 +26,9 @@ Gem::Specification.new do |s|
      "install.rb",
      "lib/easy_captcha.rb",
      "lib/easy_captcha/captcha.rb",
-     "lib/easy_captcha/config.rb",
+     "lib/easy_captcha/controller.rb",
+     "lib/easy_captcha/controller_helpers.rb",
+     "lib/easy_captcha/view_helpers.rb",
      "resources/captcha.ttf",
      "test/easy_captcha_test.rb",
      "test/test_helper.rb",
@@ -36,7 +38,7 @@ Gem::Specification.new do |s|
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.7}
-  s.summary = %q{Captcha for Rails}
+  s.summary = %q{Captcha-Plugin for Rails}
   s.test_files = [
     "test/easy_captcha_test.rb",
      "test/test_helper.rb"

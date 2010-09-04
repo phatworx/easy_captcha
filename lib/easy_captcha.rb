@@ -70,9 +70,7 @@ module EasyCaptcha
   end
 end
 
-Rails.configuration.after_initialize do #:nodoc:
-  EasyCaptcha.init
-end
+EasyCaptcha.init
 
   
 
