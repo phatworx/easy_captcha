@@ -9,7 +9,7 @@ Add following line to routes.rb
   match "captcha" => EasyCaptcha::Controller
 
 == Configuration
-You can write this in "config/initializers/easy_captcha.rb", if you want to customize the default configurtion
+You can write this in "config/initializers/easy_captcha.rb", if you want to customize the default configuration
 
   EasyCaptcha.setup do |config|
     # Chars
