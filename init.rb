@@ -1,2 +1,1 @@
-require 'rails'
-require 'easycaptcha'
+require 'easy_captcha'

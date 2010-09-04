@@ -4,7 +4,7 @@ require 'rake'
 begin  
   require 'jeweler'  
   Jeweler::Tasks.new do |gemspec|  
-    gemspec.name = "easycaptcha"  
+    gemspec.name = "easy_captcha"  
     gemspec.summary = "Captcha for Rails"  
     gemspec.description = "A Captcha Implementation for Rails by RMagick"  
     gemspec.email = "develop@marco-scholl.de"  
@@ -12,6 +12,7 @@ begin
     gemspec.authors = ["Marco Scholl"]
     gemspec.add_development_dependency "rspec", ">= 1.2.9"
     gemspec.add_runtime_dependency "rails", ">= 3.0.0"
+    gemspec.add_runtime_dependency "rmagick"
   end  
   Jeweler::GemcutterTasks.new
 rescue LoadError  
