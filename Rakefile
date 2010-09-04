@@ -8,7 +8,7 @@ begin
     gemspec.summary = "Captcha for Rails"  
     gemspec.description = "A Captcha Implementation for Rails by RMagick"  
     gemspec.email = "develop@marco-scholl.de"  
-    gemspec.homepage = "http://github.com/traxanos/easycaptcha"  
+    gemspec.homepage = "http://github.com/traxanos/easy_captcha"  
     gemspec.authors = ["Marco Scholl"]
     gemspec.add_development_dependency "rspec", ">= 1.2.9"
     gemspec.add_runtime_dependency "rails", ">= 3.0.0"
