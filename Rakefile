@@ -1,26 +1,3 @@
-# require 'rake'
-# require 'rake/testtask'
-# require 'rake/rdoctask'
-# 
-# desc 'Default: run unit tests.'
-# task :default => :test
-# 
-# desc 'Test the easycaptcha plugin.'
-# Rake::TestTask.new(:test) do |t|
-#   t.libs << 'lib'
-#   t.libs << 'test'
-#   t.pattern = 'test/**/*_test.rb'
-#   t.verbose = true
-# end
-# 
-# desc 'Generate documentation for the easycaptcha plugin.'
-# Rake::RDocTask.new(:rdoc) do |rdoc|
-#   rdoc.rdoc_dir = 'rdoc'
-#   rdoc.title    = 'Easycaptcha'
-#   rdoc.options << '--line-numbers' << '--inline-source'
-#   rdoc.rdoc_files.include('README')
-#   rdoc.rdoc_files.include('lib/**/*.rb')
-# end
 require 'rubygems'  
 require 'rake'  
   
@@ -37,6 +14,43 @@ begin
   Jeweler::GemcutterTasks.new
 rescue LoadError  
   puts "Jeweler not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com"  
-end  
-  
-Dir["#{File.dirname(__FILE__)}/tasks/*.rake"].sort.each { |ext| load ext }
+end
+
+require 'spec/rake/spectask'
+Spec::Rake::SpecTask.new(:spec) do |spec|
+  spec.libs << 'lib' << 'spec'
+  spec.spec_files = FileList['spec/**/*_spec.rb']
+end
+
+Spec::Rake::SpecTask.new(:rcov) do |spec|
+  spec.libs << 'lib' << 'spec'
+  spec.pattern = 'spec/**/*_spec.rb'
+  spec.rcov = true
+end
+
+task :spec => :check_dependencies
+
+begin
+  require 'reek/adapters/rake_task'
+  Reek::RakeTask.new do |t|
+    t.fail_on_error = true
+    t.verbose = false
+    t.source_files = 'lib/**/*.rb'
+  end
+rescue LoadError
+  task :reek do
+    abort "Reek is not available. In order to run reek, you must: sudo gem install reek"
+  end
+end
+
+task :default => :spec
+
+require 'rake/rdoctask'
+Rake::RDocTask.new do |rdoc|
+  version = File.exist?('VERSION') ? File.read('VERSION') : ""
+
+  rdoc.rdoc_dir = 'rdoc'
+  rdoc.title = "easycaptcha #{version}"
+  rdoc.rdoc_files.include('README*')
+  rdoc.rdoc_files.include('lib/**/*.rb')
+end
