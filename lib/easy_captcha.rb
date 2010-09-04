@@ -9,6 +9,9 @@ module EasyCaptcha
   # Chars
   mattr_accessor :chars
   @@chars = %w(2 3 4 5 6 7 9 A C D E F G H J K L M N P Q R S T U X Y Z)
+  # Length
+  mattr_accessor :length
+  @@length = 6
   # Font
   mattr_accessor :font_size, :font_fill_color, :font_family, :font_stroke, :font_stroke_color
   @@font_size = 24
