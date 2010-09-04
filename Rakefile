@@ -6,7 +6,7 @@ begin
   Jeweler::Tasks.new do |gemspec|  
     gemspec.name = "easy_captcha"  
     gemspec.summary = "Captcha-Plugin for Rails"  
-    gemspec.description = "Captcha-Plugin for Rails. IMage generate based on rmagick"  
+    gemspec.description = "Captcha-Plugin for Rails"  
     gemspec.email = "develop@marco-scholl.de"  
     gemspec.homepage = "http://github.com/traxanos/easy_captcha"  
     gemspec.authors = ["Marco Scholl"]

@@ -1,11 +1,13 @@
 require 'rmagick'
 require 'rails'
 require 'action_controller'
+require 'active_record'
 
 # Captcha-Plugin for Rails
 module EasyCaptcha
   autoload :Captcha, 'easy_captcha/captcha'
   autoload :Controller, 'easy_captcha/controller'
+  autoload :ModelHelpers, 'easy_captcha/model_helpers'
   autoload :ViewHelpers, 'easy_captcha/view_helpers'
   autoload :ControllerHelpers, 'easy_captcha/controller_helpers'
   
@@ -67,6 +69,7 @@ module EasyCaptcha
     
     # called by rails after initialize
     def init
+      ActiveRecord::Base.send :include, ModelHelpers
       ActionController::Base.send :include, ControllerHelpers
       ActionView::Base.send :include, ViewHelpers
     end

@@ -5,12 +5,12 @@
 
 Gem::Specification.new do |s|
   s.name = %q{easy_captcha}
-  s.version = "0.1.6"
+  s.version = "0.1.7"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Marco Scholl"]
   s.date = %q{2010-09-04}
-  s.description = %q{Captcha-Plugin for Rails. IMage generate based on rmagick}
+  s.description = %q{Captcha-Plugin for Rails}
   s.email = %q{develop@marco-scholl.de}
   s.extra_rdoc_files = [
     "README.rdoc"
@@ -27,6 +27,7 @@ Gem::Specification.new do |s|
      "lib/easy_captcha/captcha.rb",
      "lib/easy_captcha/controller.rb",
      "lib/easy_captcha/controller_helpers.rb",
+     "lib/easy_captcha/model_helpers.rb",
      "lib/easy_captcha/view_helpers.rb",
      "resources/captcha.ttf",
      "spec/easy_captcha_spec.rb",
