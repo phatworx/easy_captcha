@@ -1,3 +1,4 @@
+require 'rmagick'
 require 'rails'
 require 'action_controller'
 
