@@ -11,7 +11,7 @@ module EasyCaptcha
     end
     
     def generate_captcha_code
-      session[:captcha] = 8.times.collect { EasyCaptcha.chars[rand(EasyCaptcha.chars.size)] }.join
+      session[:captcha] = EasyCaptcha.lenght.times.collect { EasyCaptcha.chars[rand(EasyCaptcha.chars.size)] }.join
     end
 
     def valid_captcha?(code)
