@@ -1,5 +1,5 @@
 module EasyCaptcha
-  # helper class for actioncontroller
+  # helper class for ActionController
   module ControllerHelpers
     
     # declare helper_methods
