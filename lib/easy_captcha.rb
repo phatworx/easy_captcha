@@ -1,4 +1,6 @@
-require 'active_support'
+require 'rails'
+require 'action_controller'
+
 # Captcha-Plugin for Rails
 module EasyCaptcha
   autoload :Captcha, 'easy_captcha/captcha'
