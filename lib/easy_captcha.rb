@@ -1,5 +1,5 @@
 require 'active_support'
-
+# Captcha-Plugin for Rails
 module EasyCaptcha
   autoload :Captcha, 'easy_captcha/captcha'
   autoload :Controller, 'easy_captcha/controller'
