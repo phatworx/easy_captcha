@@ -1,18 +1,24 @@
 module EasyCaptcha
+  # captcha generation class
   class Captcha
-    attr_reader :code, :image
+    # code for captcha generation
+    attr_reader :code
+    # blob of generated captcha image
+    attr_reader :image
+    
+    # generate captcha by code
     def initialize(code)
       @code = code
       generate_captcha
     end
     
-    def inspect
+    def inspect #:nodoc:
       "<EasyCaptcha::Captcha @code=#{code}>"
     end
 
     private
     
-    def generate_captcha
+    def generate_captcha #:nodoc:
       canvas = Magick::Image.new(EasyCaptcha.image_width, EasyCaptcha.image_height) do |variable|
         self.background_color = EasyCaptcha.image_background_color unless EasyCaptcha.image_background_color.nil?
       end

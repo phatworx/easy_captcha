@@ -44,23 +44,25 @@ module EasyCaptcha
   @@blur_sigma = 2
 
   class << self
-    # setup
+    # to configure easy_captcha
+    # for a sample look the readme.rdoc file
     def setup
       yield self
     end
 
-    def sketch?
+    def sketch? #:nodoc:
       sketch
     end
 
-    def wave?
+    def wave? #:nodoc:
       wave
     end
       
-    def blur?
+    def blur? #:nodoc:
       blur
     end
     
+    # called by rails after initialize
     def init
       ActionController::Base.send :include, ControllerHelpers
       ActionView::Base.send :include, ViewHelpers
