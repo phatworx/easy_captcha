@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{easy_captcha}
-  s.version = "0.1.3"
+  s.version = "0.1.4"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Marco Scholl"]
@@ -23,16 +23,15 @@ Gem::Specification.new do |s|
      "VERSION",
      "easy_captcha.gemspec",
      "init.rb",
-     "install.rb",
      "lib/easy_captcha.rb",
      "lib/easy_captcha/captcha.rb",
      "lib/easy_captcha/controller.rb",
      "lib/easy_captcha/controller_helpers.rb",
      "lib/easy_captcha/view_helpers.rb",
      "resources/captcha.ttf",
-     "test/easy_captcha_test.rb",
-     "test/test_helper.rb",
-     "uninstall.rb"
+     "spec/easy_captcha_spec.rb",
+     "spec/spec.opts",
+     "spec/spec_helper.rb"
   ]
   s.homepage = %q{http://github.com/traxanos/easy_captcha}
   s.rdoc_options = ["--charset=UTF-8"]
@@ -40,8 +39,8 @@ Gem::Specification.new do |s|
   s.rubygems_version = %q{1.3.7}
   s.summary = %q{Captcha-Plugin for Rails}
   s.test_files = [
-    "test/easy_captcha_test.rb",
-     "test/test_helper.rb"
+    "spec/easy_captcha_spec.rb",
+     "spec/spec_helper.rb"
   ]
 
   if s.respond_to? :specification_version then
