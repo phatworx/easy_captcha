@@ -59,7 +59,7 @@ You can write this in "config/initializers/easy_captcha.rb", if you want to cust
   <% end %>  
 
 == Example
-You find a sample app under: http://github.com/traxanos/easy_captcha_sample
+You find an example app under: http://github.com/traxanos/easy_captcha_example
 
 == Maintainers
 
