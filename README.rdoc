@@ -6,7 +6,7 @@ To install easy_captcha
   gem install easy_captcha
 
 Add following line to routes.rb
-  match "captcha" => EasyCaptcha::Controller
+  get :captcha => EasyCaptcha::Controller
 
 == Configuration
 You can write this in "config/initializers/easy_captcha.rb", if you want to customize the default configuration

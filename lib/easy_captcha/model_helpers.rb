@@ -19,7 +19,7 @@ module EasyCaptcha
       end
 
       def valid_captcha?
-        errors.add(:captcha, :invalid) unless @captcha.to_s.upcase == @captcha_verification.to_s.upcase
+        errors.add(:captcha, :invalid) if @captcha.blank? or @captcha_verification.blank? or @captcha.to_s.upcase != @captcha_verification.to_s.upcase 
       end
     end
   end

@@ -18,8 +18,9 @@ module EasyCaptcha
       session[:captcha] = EasyCaptcha.length.times.collect { EasyCaptcha.chars[rand(EasyCaptcha.chars.size)] }.join
     end
 
-    # validate given captcha code
+    # validate given captcha code and re
     def valid_captcha?(code)
+      return false if session[:captcha].blank? or code.blank?
       session[:captcha].to_s.upcase == code.to_s.upcase
     end
     
