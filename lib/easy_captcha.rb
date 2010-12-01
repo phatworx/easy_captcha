@@ -2,6 +2,7 @@ require 'RMagick'
 require 'rails'
 require 'action_controller'
 require 'active_record'
+require 'active_support'
 
 # Captcha-Plugin for Rails
 module EasyCaptcha
@@ -13,19 +14,19 @@ module EasyCaptcha
 
   # Cache
   mattr_accessor :cache
-  @@cache = true
+  @@cache = false
 
   # Cache temp
   mattr_accessor :cache_temp_dir
-  @@cache_temp_dir = 'tmp/captcha'
+  @@cache_temp_dir = nil
 
   # Cache size
   mattr_accessor :cache_size
-  @@cache_size = 500
+  @@cache_size = 0
 
   # Cache expire
   mattr_accessor :cache_expire
-  @@cache_expire = 1.days
+  @@cache_expire = 0
 
   # Chars
   mattr_accessor :chars
