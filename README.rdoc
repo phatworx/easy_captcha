@@ -20,8 +20,8 @@ You can write this in "config/initializers/easy_captcha.rb", if you want to cust
 
     # Cache
     # config.cache = true
-    # Cache temp dir
-    # config.temp_dir = Rails.root + 'tmp' + 'captchas'
+    # Cache temp dir from Rails.root
+    # config.temp_dir = 'tmp/captcha'
     # Cache size
     # config.cache_size = 500
     # Cache expire

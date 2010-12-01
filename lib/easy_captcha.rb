@@ -17,7 +17,7 @@ module EasyCaptcha
 
   # Cache temp
   mattr_accessor :cache_temp_dir
-  @@cache_temp_dir = Rails.root + 'tmp' + 'captchas'
+  @@cache_temp_dir = 'tmp/captcha'
 
   # Cache size
   mattr_accessor :cache_size
