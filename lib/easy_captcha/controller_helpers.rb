@@ -15,6 +15,7 @@ module EasyCaptcha
         files = Dir.glob(EasyCaptcha.cache_temp_dir + "*")
         unless files.size < EasyCaptcha.cache_size
           file = File.open(files.at(Kernel.rand(files.size)))
+          session[:captcha] = File.basename(file.path)
 
           if file.mtime < EasyCaptcha.cache_expire.ago
             File.unlink(file.path)
