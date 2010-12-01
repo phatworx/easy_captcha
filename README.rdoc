@@ -11,7 +11,7 @@ Add following line to routes.rb
 Add following line to application_controller.rb
   after_filter lambda { session.delete(:captcha) }
 
-The last line is very important for security!!!
+The last filter is a critical security measurement! Every request after displaying the captcha-image must prevent this filter from being executed.
 
 == Configuration
 You can write this in "config/initializers/easy_captcha.rb", if you want to customize the default configuration
