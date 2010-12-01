@@ -10,7 +10,23 @@ module EasyCaptcha
   autoload :ModelHelpers, 'easy_captcha/model_helpers'
   autoload :ViewHelpers, 'easy_captcha/view_helpers'
   autoload :ControllerHelpers, 'easy_captcha/controller_helpers'
-  
+
+  # Cache
+  mattr_accessor :cache
+  @@cache = true
+
+  # Cache temp
+  mattr_accessor :cache_temp_dir
+  @@cache_temp_dir = Rails.root + 'tmp' + 'captchas'
+
+  # Cache size
+  mattr_accessor :cache_size
+  @@cache_size = 500
+
+  # Cache expire
+  mattr_accessor :cache_expire
+  @@cache_expire = 1.days
+
   # Chars
   mattr_accessor :chars
   @@chars = %w(2 3 4 5 6 7 9 A C D E F G H J K L M N P Q R S T U X Y Z)
@@ -62,11 +78,15 @@ module EasyCaptcha
     def wave? #:nodoc:
       wave
     end
-      
+
     def blur? #:nodoc:
       blur
     end
-    
+
+    def cache? #:nodoc:
+      cache
+    end
+
     # called by rails after initialize
     def init
       ActiveRecord::Base.send :include, ModelHelpers
@@ -78,5 +98,5 @@ end
 
 EasyCaptcha.init
 
-  
+
 

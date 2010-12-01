@@ -17,6 +17,16 @@ The last filter is a critical security measurement! Every request after displayi
 You can write this in "config/initializers/easy_captcha.rb", if you want to customize the default configuration
 
   EasyCaptcha.setup do |config|
+
+    # Cache
+    # config.cache = true
+    # Cache temp dir
+    # config.temp_dir = Rails.root + 'tmp' + 'captchas'
+    # Cache size
+    # config.cache_size = 500
+    # Cache expire
+    # config.cache_expire = 1.days
+
     # Chars
     # config.chars = %w(2 3 4 5 6 7 9 A C D E F G H J K L M N P Q R S T U X Y Z)
     # Length
@@ -65,6 +75,10 @@ You can write this in "config/initializers/easy_captcha.rb", if you want to cust
 
 == Example
 You find an example app under: http://github.com/traxanos/easy_captcha_example
+
+== History
+ * 0.1 Init
+ * 0.2 Cache support for high frequented sites
 
 == Maintainers
 
