@@ -18,7 +18,7 @@ module EasyCaptcha
 
     private
 
-    def generate_captcha(file) #:nodoc:
+    def generate_captcha(file = nil) #:nodoc:
       canvas = Magick::Image.new(EasyCaptcha.image_width, EasyCaptcha.image_height) do |variable|
         self.background_color = EasyCaptcha.image_background_color unless EasyCaptcha.image_background_color.nil?
       end

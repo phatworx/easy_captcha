@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{easy_captcha}
-  s.version = "0.2.3"
+  s.version = "0.2.4"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Marco Scholl"]
-  s.date = %q{2010-12-01}
+  s.date = %q{2010-12-07}
   s.description = %q{Captcha-Plugin for Rails}
   s.email = %q{develop@marco-scholl.de}
   s.extra_rdoc_files = [
