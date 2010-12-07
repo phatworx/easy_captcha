@@ -7,7 +7,7 @@ module EasyCaptcha
     attr_reader :image
 
     # generate captcha by code
-    def initialize(code, file)
+    def initialize(code, file = nil)
       @code = code
       generate_captcha(file)
     end
