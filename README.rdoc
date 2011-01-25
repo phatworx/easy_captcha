@@ -6,7 +6,7 @@ To install easy_captcha
   gem install easy_captcha
 
 Add following line to routes.rb
-  get :captcha => EasyCaptcha::Controller
+  match "captcha" => EasyCaptcha::Controller, :via => :get
 
 Add following line to application_controller.rb
   after_filter lambda { session.delete(:captcha) }

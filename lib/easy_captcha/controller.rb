@@ -1,6 +1,6 @@
 module EasyCaptcha
   # captcha controller
-  #   get :captcha => EasyCaptcha::Controller
+  #   match "captcha" => EasyCaptcha::Controller, :via => :get
   class Controller < ActionController::Base
     # captcha action send the generated image to browser
     def captcha
