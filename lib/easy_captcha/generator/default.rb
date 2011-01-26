@@ -1,3 +1,4 @@
+# encoding: utf-8
 module EasyCaptcha
   module Generator
 
@@ -55,7 +56,7 @@ module EasyCaptcha
       end
 
       # generate image
-      def generate(code, file = nil)
+      def generate(code)
         config = self
         canvas = Magick::Image.new(EasyCaptcha.image_width, EasyCaptcha.image_height) do |variable|
           self.background_color = config.image_background_color unless config.image_background_color.nil?
@@ -91,10 +92,11 @@ module EasyCaptcha
         # Crop image because to big after waveing
         canvas = canvas.crop(Magick::CenterGravity, EasyCaptcha.image_width, EasyCaptcha.image_height)
 
-        unless file.nil?
-          canvas.write(file) { self.format = 'PNG' }
-        end
         image = canvas.to_blob { self.format = 'PNG' }
+
+        # ruby-1.9
+        image = image.force_encoding 'UTF-8' if image.respond_to? :force_encoding
+
         canvas.destroy!
         image
       end

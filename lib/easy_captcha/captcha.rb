@@ -1,3 +1,4 @@
+# encoding: utf-8
 module EasyCaptcha
   # captcha generation class
   class Captcha
@@ -7,9 +8,9 @@ module EasyCaptcha
     attr_reader :image
 
     # generate captcha by code
-    def initialize(code, file = nil)
+    def initialize code
       @code = code
-      generate_captcha(file)
+      generate_captcha
     end
 
     def inspect #:nodoc:
@@ -18,8 +19,8 @@ module EasyCaptcha
 
     private
 
-    def generate_captcha(file = nil) #:nodoc:
-      @image = EasyCaptcha.generator.generate(@code, file)
+    def generate_captcha #:nodoc:
+      @image = EasyCaptcha.generator.generate(@code)
     end
   end
 end

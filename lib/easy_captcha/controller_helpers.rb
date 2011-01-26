@@ -11,8 +11,12 @@ module EasyCaptcha
     # generate captcha image and return it as blob
     def generate_captcha
       if EasyCaptcha.cache
+        # create cache dir
         FileUtils.mkdir_p(EasyCaptcha.cache_temp_dir)
+
+        # select all generated captchas from cache
         files = Dir.glob(EasyCaptcha.cache_temp_dir + "*")
+        
         unless files.size < EasyCaptcha.cache_size
           file              = File.open(files.at(Kernel.rand(files.size)))
           session[:captcha] = File.basename(file.path)
@@ -24,7 +28,13 @@ module EasyCaptcha
           end
         end
         generated_code = generate_captcha_code
-        Captcha.new(generated_code, EasyCaptcha.cache_temp_dir + "#{generated_code}").image
+        image = Captcha.new(generated_code).image
+
+        # write captcha for caching
+        File.open(EasyCaptcha.cache_temp_dir + "#{generated_code}", 'w') { |f| f.write image }
+
+        # return image
+        image
       else
         Captcha.new(generate_captcha_code).image
       end
