@@ -2,19 +2,14 @@
 A simple captcha implementation for rails 3 based on rmagick
 
 == Installation
-To install easy_captcha
-  gem install easy_captcha
+add to Gemfile
+  gem 'easy_captcha'
 
-Add following line to routes.rb
-  match "captcha" => EasyCaptcha::Controller, :via => :get
-
-Add following line to application_controller.rb
-  after_filter lambda { session.delete(:captcha) }
-
-The last filter is a critical security measurement! Every request after displaying the captcha-image must prevent this filter from being executed.
+execute
+  rails g easy_captcha:install
 
 == Configuration
-You can write this in "config/initializers/easy_captcha.rb", if you want to customize the default configuration
+You can configure easy_captcha in "config/initializers/easy_captcha.rb", if you want to customize the default configuration
 
   EasyCaptcha.setup do |config|
 
@@ -79,6 +74,7 @@ You find an example app under: http://github.com/traxanos/easy_captcha_example
 == History
  * 0.1 Init
  * 0.2 Cache support for high frequented sites
+ * 0.3 Use generators and optimizations
 
 == Maintainers
 
