@@ -1,52 +1,48 @@
-require 'rubygems'  
-require 'rake'  
-  
-begin  
-  require 'jeweler'  
-  Jeweler::Tasks.new do |gemspec|  
-    gemspec.name = "easy_captcha"  
-    gemspec.summary = "Captcha-Plugin for Rails"  
-    gemspec.description = "Captcha-Plugin for Rails"  
-    gemspec.email = "develop@marco-scholl.de"  
-    gemspec.homepage = "http://github.com/traxanos/easy_captcha"  
-    gemspec.authors = ["Marco Scholl"]
-    gemspec.add_development_dependency "rspec", ">= 1.2.9"
-    gemspec.add_runtime_dependency "rails", ">= 3.0.0"
-    gemspec.add_runtime_dependency "rmagick"
-  end  
-  Jeweler::GemcutterTasks.new
-rescue LoadError  
-  puts "Jeweler not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com"  
+require 'rubygems'
+require 'bundler'
+begin
+  Bundler.setup(:default, :development)
+rescue Bundler::BundlerError => e
+  $stderr.puts e.message
+  $stderr.puts "Run `bundle install` to install missing gems"
+  exit e.status_code
+end
+require 'rake'
+
+
+require 'jeweler'
+Jeweler::Tasks.new do |gem|
+  gem.name = "easy_captcha"
+  gem.homepage = "http://github.com/traxanos/easy_captcha"
+  gem.license = "MIT"
+  gem.summary = "Captcha-Plugin for Rails"
+  gem.description = "Captcha-Plugin for Rails"
+  gem.email = "develop@marco-scholl.de"
+  gem.authors = ["Marco Scholl"]
+  gem.add_runtime_dependency 'rails', '>= 3.0.0'
+  gem.add_runtime_dependency 'rmagick'
+end
+Jeweler::RubygemsDotOrgTasks.new
+
+require 'rake/testtask'
+Rake::TestTask.new(:test) do |test|
+  test.libs << 'lib' << 'test'
+  test.pattern = 'test/**/test_*.rb'
+  test.verbose = true
 end
 
-#require 'spec/rake/spectask'
-#Spec::Rake::SpecTask.new(:spec) do |spec|
-#  spec.libs << 'lib' << 'spec'
-#  spec.spec_files = FileList['spec/**/*_spec.rb']
-#end
-#
-#Spec::Rake::SpecTask.new(:rcov) do |spec|
-#  spec.libs << 'lib' << 'spec'
-#  spec.pattern = 'spec/**/*_spec.rb'
-#  spec.rcov = true
-#end
-#
-#task :spec => :check_dependencies
-#
-#begin
-#  require 'reek/adapters/rake_task'
-#  Reek::RakeTask.new do |t|
-#    t.fail_on_error = true
-#    t.verbose = false
-#    t.source_files = 'lib/**/*.rb'
-#  end
-#rescue LoadError
-#  task :reek do
-#    abort "Reek is not available. In order to run reek, you must: sudo gem install reek"
-#  end
-#end
-#
-#task :default => :spec
+namespace :cover_me do
+  task :report do
+    require 'cover_me'
+    CoverMe.complete!
+  end
+end
+
+task :test do
+  Rake::Task['cover_me:report'].invoke
+end
+
+task :default => :test
 
 require 'rake/rdoctask'
 Rake::RDocTask.new do |rdoc|

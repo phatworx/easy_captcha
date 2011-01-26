@@ -1,11 +1,11 @@
 module EasyCaptcha
-  module ModelHelpers
+  module ModelHelpers #:nodoc:
     # helper class for ActiveRecord
     def self.included(base) #:nodoc:
       base.extend ClassMethods
     end
     
-    module ClassMethods
+    module ClassMethods #:nodoc:
       # to activate model captcha validation
       def acts_as_easy_captcha
         include InstanceMethods
@@ -13,11 +13,13 @@ module EasyCaptcha
       end
     end
 
-    module InstanceMethods
-      def captcha
+    module InstanceMethods #:nodoc:
+
+      def captcha  #:nodoc:
         ""
       end
 
+      # validate captcha
       def valid_captcha?
         errors.add(:captcha, :invalid) if @captcha.blank? or @captcha_verification.blank? or @captcha.to_s.upcase != @captcha_verification.to_s.upcase 
       end

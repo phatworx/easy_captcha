@@ -41,6 +41,7 @@ module EasyCaptcha
       session[:captcha].to_s.upcase == code.to_s.upcase
     end
 
+    # reset the captcha code in session for security after each request
     def reset_last_captcha_code!
       session.delete(:captcha)
     end
