@@ -57,6 +57,11 @@ You can configure easy_captcha in "config/initializers/easy_captcha.rb", if you 
     # config.blur_sigma = 2
   end
 
+== Requirements
+
+* RMagick
+* Rails 3 (http://github.com/rails/rails)
+
 == Example
 
   <% form_tag '/' do %>
