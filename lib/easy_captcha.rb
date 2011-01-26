@@ -90,6 +90,7 @@ module EasyCaptcha
 
     # called by rails after initialize
     def init
+      require 'easy_captcha/routes'
       ActiveRecord::Base.send :include, ModelHelpers
       ActionController::Base.send :include, ControllerHelpers
       ActionView::Base.send :include, ViewHelpers

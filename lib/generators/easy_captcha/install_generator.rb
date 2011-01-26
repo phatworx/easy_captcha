@@ -10,14 +10,13 @@ module EasyCaptcha
       end
 
       def add_devise_routes
-        route 'match "captcha" => EasyCaptcha::Controller, :via => :get'
+        route 'captcha_route'
       end
 
       def add_after_filter
-      inject_into_class "app/controllers/application_controller.rb", ApplicationController do
-        "  # reset captcha code after each request for security\n  after_filter :reset_last_captcha_code!\n\n"
-      end
-
+        inject_into_class "app/controllers/application_controller.rb", ApplicationController do
+          "  # reset captcha code after each request for security\n  after_filter :reset_last_captcha_code!\n\n"
+        end
       end
     end
   end
