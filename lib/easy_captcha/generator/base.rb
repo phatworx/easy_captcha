@@ -13,6 +13,7 @@ module EasyCaptcha
       # default values for generator
       def defaults
       end
+
     end
   end
 end

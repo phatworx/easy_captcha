@@ -1,9 +1,10 @@
 module EasyCaptcha
   module Generator
 
-    # base class for generators
+    # default generator
     class Default < Base
 
+      # set default values
       def defaults
         @font_size              = 24
         @font_fill_color        = '#333333'
@@ -55,40 +56,42 @@ module EasyCaptcha
         @blur
       end
 
+      # generate image
       def generate(code, file = nil)
+        config = self
         canvas = Magick::Image.new(@image_width, @image_height) do |variable|
-          @background_color = @image_background_color unless @image_background_color.nil?
+          self.background_color = config.image_background_color unless config.image_background_color.nil?
         end
 
         # Render the text in the image
         canvas.annotate(Magick::Draw.new, 0, 0, 0, 0, code) {
-          @gravity     = Magick::CenterGravity
-          @font_family = @font_family
-          @font_weight = Magick::LighterWeight
-          @fill        = @font_fill_color
-          if @font_stroke.to_i > 0
-            @stroke       = @font_stroke_color
-            @stroke_width = @font_stroke
+          self.gravity     = Magick::CenterGravity
+          self.font_family = config.font_family
+          self.font_weight = Magick::LighterWeight
+          selffill        = config.font_fill_color
+          if config.font_stroke.to_i > 0
+            self.stroke       = config.font_stroke_color
+            self.stroke_width = config.font_stroke
           end
-          @pointsize = @font_size
+          self.pointsize = config.font_size
         }
 
         # Blur
-        canvas = canvas.blur_image(@blur_radius, @blur_sigma) if blur?
+        canvas = canvas.blur_image(config.blur_radius, config.blur_sigma) if config.blur?
 
         # Wave
-        w = @wave_length
-        a = @wave_amplitude
-        canvas = canvas.wave(rand(a.last - a.first) + a.first, rand(w.last - w.first) + w.first) if wave?
+        w = config.wave_length
+        a = config.wave_amplitude
+        canvas = canvas.wave(rand(a.last - a.first) + a.first, rand(w.last - w.first) + w.first) if config.wave?
 
         # Sketch
-        canvas = canvas.sketch(@sketch_radius, @sketch_sigma, rand(180)) if sketch?
+        canvas = canvas.sketch(config.sketch_radius, config.sketch_sigma, rand(180)) if config.sketch?
 
         # Implode
-        canvas = canvas.implode(@implode.to_f) if @implode.is_a? Float
+        canvas = canvas.implode(config.implode.to_f) if config.implode.is_a? Float
 
         # Crop image because to big after waveing
-        canvas = canvas.crop(Magick::CenterGravity, @image_width, @image_height)
+        canvas = canvas.crop(Magick::CenterGravity, config.image_width, config.image_height)
 
         unless file.nil?
           canvas.write(file) { self.format = 'PNG' }

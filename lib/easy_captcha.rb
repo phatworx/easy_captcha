@@ -32,10 +32,13 @@ module EasyCaptcha
   # Chars
   mattr_accessor :chars
   @@chars = %w(2 3 4 5 6 7 9 A C D E F G H J K L M N P Q R S T U X Y Z)
-  
+
   # Length
   mattr_accessor :length
   @@length = 6
+
+  # Generator for captcha
+  mattr_accessor :generator
 
   class << self
     # to configure easy_captcha
@@ -54,6 +57,10 @@ module EasyCaptcha
       ActiveRecord::Base.send :include, ModelHelpers
       ActionController::Base.send :include, ControllerHelpers
       ActionView::Base.send :include, ViewHelpers
+
+      # set default generator
+      EasyCaptcha.generator = EasyCaptcha::Generator::Default.new if EasyCaptcha.generator.nil?
+
     end
   end
 end

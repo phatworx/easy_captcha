@@ -19,8 +19,7 @@ module EasyCaptcha
     private
 
     def generate_captcha(file = nil) #:nodoc:
-      @generator = EasyCaptcha::Generator::Default.new
-      @image = @generator.generate(@code, file)
+      @image = EasyCaptcha.generator.generate(@code, file)
     end
   end
 end
