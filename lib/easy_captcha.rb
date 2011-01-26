@@ -37,6 +37,11 @@ module EasyCaptcha
   mattr_accessor :length
   @@length = 6
 
+  # Length
+  mattr_accessor :image_width, :image_height
+  @@image_width  = 140
+  @@image_height = 40
+
   class << self
     # to configure easy_captcha
     # for a sample look the readme.rdoc file
@@ -48,6 +53,7 @@ module EasyCaptcha
       cache
     end
 
+    # select generator and configure this
     def generator(generator = nil, &block)
       if generator.nil?
         @generator
@@ -62,6 +68,27 @@ module EasyCaptcha
         @generator = generator.new &block
       end
     end
+
+    # depracated
+    def method_missing name, *args
+      depracations = [
+          :font_size, :font_fill_color, :font_family, :font_stroke, :font_stroke_color,
+          :image_background_color, :sketch, :sketch_radius, :sketch_sigma, :wave,
+          :wave_length, :wave_amplitude, :implode, :blur, :blur_radius, :blur_sigma
+      ]
+
+      if depracations.include? name[0..-2].to_sym or depracations.include? name.to_sym
+        ActiveSupport::Deprecation.warn "EasyCaptcha.#{name} is deprecated."
+        if name[-1] == '='
+          self.generator.send(name, args.first)
+        else
+          self.generator.send(name)
+        end
+      else
+        super
+      end
+    end
+
 
     # called by rails after initialize
     def init

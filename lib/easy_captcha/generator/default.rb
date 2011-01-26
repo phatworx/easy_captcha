@@ -11,8 +11,6 @@ module EasyCaptcha
         @font_family            = File.expand_path('../../../../resources/captcha.ttf', __FILE__)
         @font_stroke            = '#000000'
         @font_stroke_color      = 0
-        @image_width            = 140
-        @image_height           = 40
         @image_background_color = '#FFFFFF'
         @sketch                 = true
         @sketch_radius          = 3
@@ -29,8 +27,8 @@ module EasyCaptcha
       # Font
       attr_accessor :font_size, :font_fill_color, :font_family, :font_stroke, :font_stroke_color
 
-      # Image
-      attr_accessor :image_width, :image_height, :image_background_color
+      # Background
+      attr_accessor :image_background_color
 
       # Sketch
       attr_accessor :sketch, :sketch_radius, :sketch_sigma
@@ -59,7 +57,7 @@ module EasyCaptcha
       # generate image
       def generate(code, file = nil)
         config = self
-        canvas = Magick::Image.new(@image_width, @image_height) do |variable|
+        canvas = Magick::Image.new(EasyCaptcha.image_width, EasyCaptcha.image_height) do |variable|
           self.background_color = config.image_background_color unless config.image_background_color.nil?
         end
 
@@ -68,7 +66,7 @@ module EasyCaptcha
           self.gravity     = Magick::CenterGravity
           self.font_family = config.font_family
           self.font_weight = Magick::LighterWeight
-          selffill        = config.font_fill_color
+          self.fill        = config.font_fill_color
           if config.font_stroke.to_i > 0
             self.stroke       = config.font_stroke_color
             self.stroke_width = config.font_stroke
@@ -91,7 +89,7 @@ module EasyCaptcha
         canvas = canvas.implode(config.implode.to_f) if config.implode.is_a? Float
 
         # Crop image because to big after waveing
-        canvas = canvas.crop(Magick::CenterGravity, config.image_width, config.image_height)
+        canvas = canvas.crop(Magick::CenterGravity, EasyCaptcha.image_width, EasyCaptcha.image_height)
 
         unless file.nil?
           canvas.write(file) { self.format = 'PNG' }
