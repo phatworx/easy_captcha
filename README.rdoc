@@ -5,7 +5,7 @@ A simple captcha implementation for rails 3 based on rmagick
 add to Gemfile
   gem 'easy_captcha'
 
-execute
+after bundle execute
   rails g easy_captcha:install
 
 == Configuration
