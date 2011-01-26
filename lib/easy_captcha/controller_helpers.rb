@@ -14,7 +14,7 @@ module EasyCaptcha
         FileUtils.mkdir_p(EasyCaptcha.cache_temp_dir)
         files = Dir.glob(EasyCaptcha.cache_temp_dir + "*")
         unless files.size < EasyCaptcha.cache_size
-          file = File.open(files.at(Kernel.rand(files.size)))
+          file              = File.open(files.at(Kernel.rand(files.size)))
           session[:captcha] = File.basename(file.path)
 
           if file.mtime < EasyCaptcha.cache_expire.ago
@@ -39,6 +39,10 @@ module EasyCaptcha
     def valid_captcha?(code)
       return false if session[:captcha].blank? or code.blank?
       session[:captcha].to_s.upcase == code.to_s.upcase
+    end
+
+    def reset_last_captcha_code!
+      session.delete(:captcha)
     end
 
   end
