@@ -37,9 +37,6 @@ module EasyCaptcha
   mattr_accessor :length
   @@length = 6
 
-  # Generator for captcha
-  mattr_accessor :generator
-
   class << self
     # to configure easy_captcha
     # for a sample look the readme.rdoc file
@@ -51,6 +48,21 @@ module EasyCaptcha
       cache
     end
 
+    def generator(generator = nil, &block)
+      if generator.nil?
+        @generator
+      else
+        generator = generator.to_s if generator.is_a? Symbol
+
+        if generator.is_a? String
+          generator.gsub!(/^[a-z]|\s+[a-z]/) { |a| a.upcase }
+          generator = "EasyCaptcha::Generator::#{generator}".constantize
+        end
+
+        @generator = generator.new &block
+      end
+    end
+
     # called by rails after initialize
     def init
       require 'easy_captcha/routes'
@@ -59,7 +71,7 @@ module EasyCaptcha
       ActionView::Base.send :include, ViewHelpers
 
       # set default generator
-      EasyCaptcha.generator = EasyCaptcha::Generator::Default.new if EasyCaptcha.generator.nil?
+      generator :default
 
     end
   end
