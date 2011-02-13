@@ -90,6 +90,7 @@ You find an example app under: http://github.com/traxanos/easy_captcha_example
 
 == Maintainers
 
+* Team Phatworx (http://github.com/phatworx)
 * Marco Scholl (http://github.com/traxanos)
 
 == Contributing to EasyCaptcha
