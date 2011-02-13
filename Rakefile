@@ -17,7 +17,7 @@ Jeweler::Tasks.new do |gem|
   gem.license = "MIT"
   gem.summary = %Q{Captcha-Plugin for Rails}
   gem.description = %Q{Captcha-Plugin for Rails}
-  gem.email = "develop@marco-scholl.de"
+  gem.email = "team@phatworx.de"
   gem.authors = ["Marco Scholl"]
 end
 Jeweler::RubygemsDotOrgTasks.new
