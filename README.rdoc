@@ -80,7 +80,7 @@ You can configure easy_captcha in "config/initializers/easy_captcha.rb", if you 
   <% end %>  
 
 == Example app
-You find an example app under: http://github.com/traxanos/easy_captcha_example
+You find an example app under: http://github.com/phatworx/easy_captcha_example
 
 == History
  * 0.1 init
