@@ -4,7 +4,7 @@ module EasyCaptcha
 
     def self.included(base) #:nodoc:
       base.class_eval do
-        helper_method :valid_captcha?
+        helper_method :valid_captcha?, :captcha_valid?
       end
     end
 
@@ -46,10 +46,11 @@ module EasyCaptcha
     end
 
     # validate given captcha code and re
-    def valid_captcha?(code)
+    def captcha_valid?(code)
       return false if session[:captcha].blank? or code.blank?
       session[:captcha].to_s.upcase == code.to_s.upcase
     end
+    alias_method :valid_captcha?, :captcha_valid?
 
     # reset the captcha code in session for security after each request
     def reset_last_captcha_code!
