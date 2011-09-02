@@ -71,6 +71,7 @@ module EasyCaptcha
 
     # depracated
     def method_missing name, *args
+      name = name.to_s # fix for jruby
       depracations = [
           :font_size, :font_fill_color, :font_family, :font_stroke, :font_stroke_color,
           :image_background_color, :sketch, :sketch_radius, :sketch_sigma, :wave,
@@ -79,7 +80,7 @@ module EasyCaptcha
 
       if depracations.include? name[0..-2].to_sym or depracations.include? name.to_sym
         ActiveSupport::Deprecation.warn "EasyCaptcha.#{name} is deprecated."
-        if name[-1] == '='
+        if name[-1,1] == '='
           self.generator.send(name, args.first)
         else
           self.generator.send(name)
