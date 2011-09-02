@@ -1,7 +1,7 @@
 = EasyCaptcha
 A simple captcha implementation for rails 3 based on rmagick
 
-http://travis-ci.org/phatworx/easy_captcha.png
+https://travis-ci.org/phatworx/easy_captcha.png
 
 == Installation
 add to Gemfile
