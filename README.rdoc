@@ -6,6 +6,11 @@ https://travis-ci.org/phatworx/easy_captcha.png
 == Installation
 add to Gemfile
   gem 'easy_captcha'
+  gem 'rmagick'
+
+for java you can use
+
+  gem 'rmagick4j'
 
 after bundle execute
   rails g easy_captcha:install
