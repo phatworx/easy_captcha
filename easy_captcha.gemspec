@@ -5,13 +5,14 @@
 
 Gem::Specification.new do |s|
   s.name = %q{easy_captcha}
-  s.version = "0.4.5"
+  s.version = "0.4.6"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = [%q{Marco Scholl}]
   s.date = %q{2011-09-15}
   s.description = %q{Captcha-Plugin for Rails}
   s.email = %q{team@phatworx.de}
+  s.executables = [%q{ramgick}, %q{rmagick4r}]
   s.extra_rdoc_files = [
     "LICENSE.txt",
     "README.rdoc"
@@ -54,6 +55,8 @@ Gem::Specification.new do |s|
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<rails>, [">= 3.0.0"])
+      s.add_runtime_dependency(%q<rmagick>, [">= 0"])
+      s.add_runtime_dependency(%q<rmagick4j>, [">= 0"])
       s.add_development_dependency(%q<bundler>, ["~> 1.0.0"])
       s.add_development_dependency(%q<jeweler>, ["~> 1.6.4"])
       s.add_development_dependency(%q<simplecov>, [">= 0.3.8"])
@@ -61,6 +64,8 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<yard>, [">= 0.7.0"])
     else
       s.add_dependency(%q<rails>, [">= 3.0.0"])
+      s.add_dependency(%q<rmagick>, [">= 0"])
+      s.add_dependency(%q<rmagick4j>, [">= 0"])
       s.add_dependency(%q<bundler>, ["~> 1.0.0"])
       s.add_dependency(%q<jeweler>, ["~> 1.6.4"])
       s.add_dependency(%q<simplecov>, [">= 0.3.8"])
@@ -69,6 +74,8 @@ Gem::Specification.new do |s|
     end
   else
     s.add_dependency(%q<rails>, [">= 3.0.0"])
+    s.add_dependency(%q<rmagick>, [">= 0"])
+    s.add_dependency(%q<rmagick4j>, [">= 0"])
     s.add_dependency(%q<bundler>, ["~> 1.0.0"])
     s.add_dependency(%q<jeweler>, ["~> 1.6.4"])
     s.add_dependency(%q<simplecov>, [">= 0.3.8"])
