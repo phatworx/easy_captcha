@@ -54,8 +54,8 @@ Gem::Specification.new do |s|
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<rails>, [">= 3.0.0"])
-      s.add_runtime_dependency(%q<rmagick>, [">= 0"])
-      s.add_runtime_dependency(%q<rmagick4j>, [">= 0"])
+#      s.add_runtime_dependency(%q<rmagick>, [">= 0"])
+#      s.add_runtime_dependency(%q<rmagick4j>, [">= 0"])
       s.add_development_dependency(%q<bundler>, ["~> 1.0.0"])
       s.add_development_dependency(%q<jeweler>, ["~> 1.6.4"])
       s.add_development_dependency(%q<simplecov>, [">= 0.3.8"])
@@ -63,8 +63,8 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<yard>, [">= 0.7.0"])
     else
       s.add_dependency(%q<rails>, [">= 3.0.0"])
-      s.add_dependency(%q<rmagick>, [">= 0"])
-      s.add_dependency(%q<rmagick4j>, [">= 0"])
+#      s.add_dependency(%q<rmagick>, [">= 0"])
+#      s.add_dependency(%q<rmagick4j>, [">= 0"])
       s.add_dependency(%q<bundler>, ["~> 1.0.0"])
       s.add_dependency(%q<jeweler>, ["~> 1.6.4"])
       s.add_dependency(%q<simplecov>, [">= 0.3.8"])
@@ -73,8 +73,8 @@ Gem::Specification.new do |s|
     end
   else
     s.add_dependency(%q<rails>, [">= 3.0.0"])
-    s.add_dependency(%q<rmagick>, [">= 0"])
-    s.add_dependency(%q<rmagick4j>, [">= 0"])
+#    s.add_dependency(%q<rmagick>, [">= 0"])
+#    s.add_dependency(%q<rmagick4j>, [">= 0"])
     s.add_dependency(%q<bundler>, ["~> 1.0.0"])
     s.add_dependency(%q<jeweler>, ["~> 1.6.4"])
     s.add_dependency(%q<simplecov>, [">= 0.3.8"])
