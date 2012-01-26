@@ -23,30 +23,20 @@ Gem::Specification.new do |s|
   s.summary = %q{Captcha-Plugin for Rails}
 
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
+  s.test_files    = `git ls-files -- {spec}/*`.split("\n")
   s.require_paths = ["lib"]
 
-  if s.respond_to? :specification_version then
-    s.specification_version = 3
+  s.add_dependency('rails', [">= 3.0.0"])
+  s.add_dependency('bundler', ["~> 1.0.0"])
+  s.add_dependency('simplecov', [">= 0.3.8"])
+  s.add_dependency('rspec', ["~> 2.6.0"])
+  s.add_dependency('yard', [">= 0.7.0"])
 
-    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<rails>, [">= 3.0.0"])
-      s.add_development_dependency(%q<bundler>, ["~> 1.0.0"])
-      s.add_development_dependency(%q<simplecov>, [">= 0.3.8"])
-      s.add_development_dependency(%q<rspec>, ["~> 2.6.0"])
-      s.add_development_dependency(%q<yard>, [">= 0.7.0"])
-    else
-      s.add_dependency(%q<rails>, [">= 3.0.0"])
-      s.add_dependency(%q<bundler>, ["~> 1.0.0"])
-      s.add_dependency(%q<simplecov>, [">= 0.3.8"])
-      s.add_dependency(%q<rspec>, ["~> 2.6.0"])
-      s.add_dependency(%q<yard>, [">= 0.7.0"])
-    end
+
+  if defined?(PLATFORM) && PLATFORM == 'java'
+    s.add_runtime_dependency('rmagick4j','>= 0.3.7')
   else
-    s.add_dependency(%q<rails>, [">= 3.0.0"])
-    s.add_dependency(%q<bundler>, ["~> 1.0.0"])
-    s.add_dependency(%q<simplecov>, [">= 0.3.8"])
-    s.add_dependency(%q<rspec>, ["~> 2.6.0"])
-    s.add_dependency(%q<yard>, [">= 0.7.0"])
+    s.add_runtime_dependency('rmagick','>= 2.13.1')
   end
 end
 
