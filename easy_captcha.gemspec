@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
 
   s.homepage = %q{http://github.com/phatworx/easy_captcha}
   s.licenses = [%q{MIT}]
-  s.rubygems_version = %q{1.8.6}
+  s.rubygems_version = %q{1.8.15}
   s.summary = %q{Captcha-Plugin for Rails}
 
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
