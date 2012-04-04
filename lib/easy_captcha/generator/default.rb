@@ -29,7 +29,7 @@ module EasyCaptcha
       attr_accessor :font_size, :font_fill_color, :font, :font_family, :font_stroke, :font_stroke_color
 
       # Background
-      attr_accessor :image_background_color
+      attr_accessor :image_background_color, :background_image
 
       # Sketch
       attr_accessor :sketch, :sketch_radius, :sketch_sigma
@@ -60,6 +60,7 @@ module EasyCaptcha
         config = self
         canvas = Magick::Image.new(EasyCaptcha.image_width, EasyCaptcha.image_height) do |variable|
           self.background_color = config.image_background_color unless config.image_background_color.nil?
+          self.background_color = 'none' if config.background_image.present?
         end
 
         # Render the text in the image
@@ -92,7 +93,16 @@ module EasyCaptcha
         # Crop image because to big after waveing
         canvas = canvas.crop(Magick::CenterGravity, EasyCaptcha.image_width, EasyCaptcha.image_height)
 
-        image = canvas.to_blob { self.format = 'PNG' }
+
+	# Combine images if background image is present
+	if config.background_image.present?
+	  background = Magick::Image.read(config.background_image).first
+	  background.composite!(canvas, Magick::CenterGravity, Magick::OverCompositeOp)
+	  
+	  image = background.to_blob { self.format = 'PNG' }
+	else
+          image = canvas.to_blob { self.format = 'PNG' }
+	end
 
         # ruby-1.9
         image = image.force_encoding 'UTF-8' if image.respond_to? :force_encoding
