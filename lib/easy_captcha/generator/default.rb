@@ -9,7 +9,7 @@ module EasyCaptcha
       def defaults
         @font_size              = 24
         @font_fill_color        = '#333333'
-        @font_family            = File.expand_path('../../../../resources/captcha.ttf', __FILE__)
+        @font		        = File.expand_path('../../../../resources/captcha.ttf', __FILE__)
         @font_stroke            = '#000000'
         @font_stroke_color      = 0
         @image_background_color = '#FFFFFF'
@@ -26,7 +26,7 @@ module EasyCaptcha
       end
 
       # Font
-      attr_accessor :font_size, :font_fill_color, :font_family, :font_stroke, :font_stroke_color
+      attr_accessor :font_size, :font_fill_color, :font, :font_family, :font_stroke, :font_stroke_color
 
       # Background
       attr_accessor :image_background_color
@@ -65,7 +65,7 @@ module EasyCaptcha
         # Render the text in the image
         canvas.annotate(Magick::Draw.new, 0, 0, 0, 0, code) {
           self.gravity     = Magick::CenterGravity
-          self.font_family = config.font_family
+          self.font 	   = config.font
           self.font_weight = Magick::LighterWeight
           self.fill        = config.font_fill_color
           if config.font_stroke.to_i > 0
