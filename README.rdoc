@@ -22,7 +22,7 @@ You can configure easy_captcha in "config/initializers/easy_captcha.rb", if you 
     # Cache
     # config.cache          = true
     # Cache temp dir from Rails.root
-    # config.cache_temp_dir = Rails.root + 'tmp' + 'captchas'
+    # config.cache_temp_dir = Rails.root.join('tmp/captchas')
     # Cache size
     # config.cache_size     = 500
     # Cache expire
@@ -46,9 +46,13 @@ You can configure easy_captcha in "config/initializers/easy_captcha.rb", if you 
       # generator.font_fill_color        = '#333333'
       # generator.font_stroke_color      = '#000000'
       # generator.font_stroke            = 0
-      # generator.font_family            = File.expand_path('../../resources/afont.ttf', __FILE__)
+      # generator.font                   = File.expand_path('../../resources/afont.ttf', __FILE__)
 
+
+      # Background color
       # generator.image_background_color = "#FFFFFF"
+      # Or background image (e.g. transparent png)
+      # generator.background_image       = File.expand_path('../../resources/captcha_bg.png', __FILE__)
 
       # Wave
       # generator.wave                   = true
@@ -94,11 +98,13 @@ You find an example app under: http://github.com/phatworx/easy_captcha_example
  * 0.2 cache support for high frequented sites
  * 0.3 use generators, optimizations, update licence to same of all my plugins
  * 0.4 generator support
+ * 0.5 (transparent) background support
 
 == Maintainers
 
 * Team Phatworx (http://github.com/phatworx)
 * Marco Scholl (http://github.com/traxanos)
+* Alexander Dreher (http://github.com/alexdreher)
 
 == Contributing to EasyCaptcha
 
