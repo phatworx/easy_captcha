@@ -3,6 +3,7 @@ require 'rails'
 require 'action_controller'
 require 'active_record'
 require 'active_support'
+require 'easy_captcha/parameters'
 
 # Captcha-Plugin for Rails
 module EasyCaptcha
