@@ -27,7 +27,7 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   s.add_dependency('rails', [">= 3.0.0"])
-  s.add_dependency('bundler', ["~> 1.1.0"])
+  s.add_dependency('bundler', [">= 1.1.0"])
   s.add_dependency('simplecov', [">= 0.3.8"])
   s.add_dependency('rspec-rails', ["~> 2.8.1"])
   s.add_dependency('yard', [">= 0.7.0"])
