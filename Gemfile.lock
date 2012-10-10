@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    easy_captcha (0.5.0)
+    easy_captcha (0.5.1)
       bundler (>= 1.1.0)
       rails (>= 3.0.0)
       rmagick (>= 2.13.1)
