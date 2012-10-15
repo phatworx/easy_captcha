@@ -7,6 +7,7 @@ require 'easy_captcha/parameters'
 
 # Captcha-Plugin for Rails
 module EasyCaptcha
+  autoload :Espeak, 'easy_captcha/espeak'
   autoload :Captcha, 'easy_captcha/captcha'
   autoload :Controller, 'easy_captcha/controller'
   autoload :ModelHelpers, 'easy_captcha/model_helpers'
@@ -68,6 +69,10 @@ module EasyCaptcha
 
         @generator = generator.new &block
       end
+    end
+
+    def espeak(&block)
+      @espeak = Espeak.new &block
     end
 
     # depracated

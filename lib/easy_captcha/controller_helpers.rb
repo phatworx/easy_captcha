@@ -15,14 +15,16 @@ module EasyCaptcha
         FileUtils.mkdir_p(EasyCaptcha.cache_temp_dir)
 
         # select all generated captchas from cache
-        files = Dir.glob(EasyCaptcha.cache_temp_dir + "*")
-        
+        files = Dir.glob(EasyCaptcha.cache_temp_dir + "*.png")
+
         unless files.size < EasyCaptcha.cache_size
           file              = File.open(files.at(Kernel.rand(files.size)))
           session[:captcha] = File.basename(file.path)
 
           if file.mtime < EasyCaptcha.cache_expire.ago
             File.unlink(file.path)
+            # remove speech version
+            File.unlink(file.path.gsub(/png\z/, "wav")) if File.exists?(file.path.gsub(/png\z/, "wav"))
           else
             return file.readlines.join
           end
@@ -31,13 +33,42 @@ module EasyCaptcha
         image = Captcha.new(generated_code).image
 
         # write captcha for caching
-        File.open(EasyCaptcha.cache_temp_dir + "#{generated_code}", 'w') { |f| f.write image }
+        File.open(captcha_cache_path(generated_code), 'w') { |f| f.write image }
+
+        # write speech file if u create a new captcha image
+        EasyCaptcha.espeak.generate(generated_code, speech_captcha_cache_path(generated_code))
 
         # return image
         image
       else
         Captcha.new(generate_captcha_code).image
       end
+    end
+
+    # generate speech by captcha from session
+    def generate_speech_captcha
+      if EasyCaptcha.cache
+        File.read(speech_captcha_cache_path(current_captcha_code))
+      else
+        wav_file = Tempfile.new("#{current_captcha_code}.wav")
+        EasyCaptcha.espeak.generate(current_captcha_code, wav_file.path)
+        File.read(wav_file.path)
+      end
+    end
+
+    # return cache path of captcha image
+    def captcha_cache_path(code)
+      "#{EasyCaptcha.cache_temp_dir}/#{code}.png"
+    end
+
+    # return cache path of speech captcha
+    def speech_captcha_cache_path(code)
+      "#{EasyCaptcha.cache_temp_dir}/#{code}.wav"
+    end
+
+    # current active captcha from session
+    def current_captcha_code
+      session[:captcha]
     end
 
     # generate captcha code, save in session and return

@@ -18,6 +18,21 @@ EasyCaptcha.setup do |config|
   # config.image_height   = 40
   # config.image_width    = 140
 
+  # eSpeak
+  # config.espeak do |espeak|
+    # Amplitude, 0 to 200
+    # espeak.amplitude = 80..120
+
+    # Word gap. Pause between words
+    # espeak.gap = 80
+
+    # Pitch adjustment, 0 to 99
+    # espeak.pitch = 30..70
+
+    # Use voice file of this name from espeak-data/voices
+    # espeak.voice = nil
+  # end
+
   # configure generator
   # config.generator :default do |generator|
 
