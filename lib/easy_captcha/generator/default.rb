@@ -94,15 +94,15 @@ module EasyCaptcha
         canvas = canvas.crop(Magick::CenterGravity, EasyCaptcha.image_width, EasyCaptcha.image_height)
 
 
-	# Combine images if background image is present
-	if config.background_image.present?
-	  background = Magick::Image.read(config.background_image).first
-	  background.composite!(canvas, Magick::CenterGravity, Magick::OverCompositeOp)
-	  
-	  image = background.to_blob { self.format = 'PNG' }
-	else
-          image = canvas.to_blob { self.format = 'PNG' }
-	end
+        # Combine images if background image is present
+        if config.background_image.present?
+          background = Magick::Image.read(config.background_image).first
+          background.composite!(canvas, Magick::CenterGravity, Magick::OverCompositeOp)
+
+          image = background.to_blob { self.format = 'PNG' }
+        else
+                image = canvas.to_blob { self.format = 'PNG' }
+        end
 
         # ruby-1.9
         image = image.force_encoding 'UTF-8' if image.respond_to? :force_encoding
