@@ -40,6 +40,21 @@ You can configure easy_captcha in "config/initializers/easy_captcha.rb", if you 
     # config.image_height   = 40
     # config.image_width    = 140
 
+    # eSpeak (default disabled)
+    # config.espeak do |espeak|
+      # Amplitude, 0 to 200
+      # espeak.amplitude = 80..120
+
+      # Word gap. Pause between words
+      # espeak.gap = 80
+
+      # Pitch adjustment, 0 to 99
+      # espeak.pitch = 30..70
+
+      # Use voice file of this name from espeak-data/voices
+      # espeak.voice = nil
+    # end
+
     # configure generator
     # config.generator :default do |generator|
 
@@ -90,17 +105,18 @@ You can configure easy_captcha in "config/initializers/easy_captcha.rb", if you 
     <p><%= captcha_tag %></p>
     <p><%= text_field_tag :captcha %></p>
     <p><%= submit_tag 'Validate' %></p>
-  <% end %>  
+  <% end %>
 
 == Example app
 You find an example app under: http://github.com/phatworx/easy_captcha_example
 
 == History
- * 0.1 init
- * 0.2 cache support for high frequented sites
- * 0.3 use generators, optimizations, update licence to same of all my plugins
- * 0.4 generator support
- * 0.5 (transparent) background support
+* 0.1 init
+* 0.2 cache support for high frequented sites
+* 0.3 use generators, optimizations, update licence to same of all my plugins
+* 0.4 generator support
+* 0.5 (transparent) background support
+* 0.6 espeak support for barrier-free support
 
 == Maintainers
 

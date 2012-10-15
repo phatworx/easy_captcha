@@ -36,7 +36,7 @@ module EasyCaptcha
         File.open(captcha_cache_path(generated_code), 'w') { |f| f.write image }
 
         # write speech file if u create a new captcha image
-        EasyCaptcha.espeak.generate(generated_code, speech_captcha_cache_path(generated_code))
+        EasyCaptcha.espeak.generate(generated_code, speech_captcha_cache_path(generated_code)) if EasyCaptcha.espeak?
 
         # return image
         image
@@ -47,6 +47,7 @@ module EasyCaptcha
 
     # generate speech by captcha from session
     def generate_speech_captcha
+      raise RuntimeError, "espeak disabled" unless EasyCaptcha.espeak?
       if EasyCaptcha.cache
         File.read(speech_captcha_cache_path(current_captcha_code))
       else

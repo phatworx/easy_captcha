@@ -71,8 +71,24 @@ module EasyCaptcha
       end
     end
 
+    def espeak=(state)
+      if state === true
+        @espeak = Espeak.new
+      else
+        @espeak = false
+      end
+    end
+
     def espeak(&block)
-      @espeak = Espeak.new &block
+      if block_given?
+        @espeak = Espeak.new &block
+      else
+        @espeak ||= false
+      end
+    end
+
+    def espeak?
+      not @espeak === false
     end
 
     # depracated
