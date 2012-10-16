@@ -47,7 +47,7 @@ module EasyCaptcha
         v = @voice
       end
 
-      v.gsub /[^A-Za-z0-9\-\+]/, ""
+      v.try :gsub, /[^A-Za-z0-9\-\+]/, ""
     end
 
     # generate wav file by captcha
