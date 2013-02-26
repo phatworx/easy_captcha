@@ -87,7 +87,7 @@ module EasyCaptcha
     end
 
     def espeak?
-      not @espeak === false
+      not espeak === false
     end
 
     # depracated
