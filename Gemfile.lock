@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    easy_captcha (0.6.2)
+    easy_captcha (0.6.3)
       bundler (>= 1.1.0)
       rails (>= 3.0.0)
       rmagick (>= 2.13.1)
@@ -106,7 +106,7 @@ GEM
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.35)
-    yard (0.8.5.1)
+    yard (0.8.5.2)
 
 PLATFORMS
   ruby
