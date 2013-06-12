@@ -24,11 +24,11 @@ You can configure easy_captcha in "config/initializers/easy_captcha.rb", if you 
     # Cache
     # config.cache          = true
     # Cache temp dir from Rails.root
-    # config.cache_temp_dir = Rails.root.join('tmp/captchas')
+    # config.cache_temp_dir = Rails.root.join('tmp', 'captchas')
     # Cache size
     # config.cache_size     = 500
     # Cache expire
-    # config.cache_expire   = 1.days
+    # config.cache_expire   = 1.day
 
     # Chars
     # config.chars          = %w(2 3 4 5 6 7 9 A C D E F G H J K L M N P Q R S T U X Y Z)
@@ -123,6 +123,7 @@ You find an example app under: http://github.com/phatworx/easy_captcha_example
 * Team Phatworx (http://github.com/phatworx)
 * Marco Scholl (http://github.com/traxanos)
 * Alexander Dreher (http://github.com/alexdreher)
+* Christoph Chilian (http://github.com/cc-web)
 
 == Contributing to EasyCaptcha
 
