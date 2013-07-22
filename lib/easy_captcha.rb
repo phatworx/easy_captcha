@@ -16,19 +16,19 @@ module EasyCaptcha
 
   # Cache
   mattr_accessor :cache
-  @@cache = false
+  @@cache = true
 
   # Cache temp
   mattr_accessor :cache_temp_dir
-  @@cache_temp_dir = nil
+  @@cache_temp_dir = Rails.root.join('tmp', 'captchas')
 
   # Cache size
   mattr_accessor :cache_size
-  @@cache_size = 0
+  @@cache_size = 500
 
   # Cache expire
   mattr_accessor :cache_expire
-  @@cache_expire = 0
+  @@cache_expire = 1.day
 
   # Chars
   mattr_accessor :chars
