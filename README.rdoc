@@ -91,6 +91,20 @@ You can configure easy_captcha in "config/initializers/easy_captcha.rb", if you 
     # end
   end
 
+== Caching
+It is strongly recommended to enable caching. You can see the three paramters which you have to fill in your config file below.
+
+  EasyCaptcha.setup do |config|
+    # Cache
+    config.cache          = true
+    # Cache temp dir from Rails.root
+    config.cache_temp_dir = Rails.root.join('tmp', 'captchas')
+    # Cache expire
+    config.cache_expire   = 1.day
+    # Cache size
+    # config.cache_size     = 500
+  end
+
 == Requirements
 
 * RMagick
