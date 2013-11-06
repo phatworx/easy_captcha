@@ -1,4 +1,5 @@
 # encoding: utf-8
+
 module EasyCaptcha
   module Generator
 
@@ -9,7 +10,7 @@ module EasyCaptcha
       def defaults
         @font_size              = 24
         @font_fill_color        = '#333333'
-        @font		        = File.expand_path('../../../../resources/captcha.ttf', __FILE__)
+        @font                   = File.expand_path('../../../../resources/captcha.ttf', __FILE__)
         @font_stroke            = '#000000'
         @font_stroke_color      = 0
         @image_background_color = '#FFFFFF'
@@ -57,6 +58,8 @@ module EasyCaptcha
 
       # generate image
       def generate(code)
+        require 'RMagick' unless defined?(Magick)
+
         config = self
         canvas = Magick::Image.new(EasyCaptcha.image_width, EasyCaptcha.image_height) do |variable|
           self.background_color = config.image_background_color unless config.image_background_color.nil?
@@ -66,7 +69,7 @@ module EasyCaptcha
         # Render the text in the image
         canvas.annotate(Magick::Draw.new, 0, 0, 0, 0, code) {
           self.gravity     = Magick::CenterGravity
-          self.font 	   = config.font
+          self.font        = config.font
           self.font_weight = Magick::LighterWeight
           self.fill        = config.font_fill_color
           if config.font_stroke.to_i > 0
@@ -101,7 +104,7 @@ module EasyCaptcha
 
           image = background.to_blob { self.format = 'PNG' }
         else
-                image = canvas.to_blob { self.format = 'PNG' }
+          image = canvas.to_blob { self.format = 'PNG' }
         end
 
         # ruby-1.9
