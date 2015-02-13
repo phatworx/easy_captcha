@@ -3,7 +3,7 @@ module ActionDispatch #:nodoc:
     class Mapper #:nodoc:
       # call to add default captcha root
       def captcha_route
-        get 'captcha' => 'easy_captcha/captcha#captcha'
+        match 'captcha' => 'easy_captcha/captcha#captcha', :via => :get
       end
     end
   end

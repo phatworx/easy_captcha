@@ -8,7 +8,7 @@ require 'active_support'
 module EasyCaptcha
   autoload :Espeak, 'easy_captcha/espeak'
   autoload :Captcha, 'easy_captcha/captcha'
-  autoload :Controller, 'easy_captcha/controller'
+  autoload :CaptchaController, 'easy_captcha/captcha_controller'
   autoload :ModelHelpers, 'easy_captcha/model_helpers'
   autoload :ViewHelpers, 'easy_captcha/view_helpers'
   autoload :ControllerHelpers, 'easy_captcha/controller_helpers'
