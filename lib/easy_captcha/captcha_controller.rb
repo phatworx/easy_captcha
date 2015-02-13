@@ -1,6 +1,6 @@
 module EasyCaptcha
   # captcha controller
-  class Controller < ActionController::Base
+  class CaptchaController < ActionController::Base
     before_filter :overwrite_cache_control
     # captcha action send the generated image to browser
     def captcha
