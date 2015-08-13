@@ -1,6 +1,5 @@
 require 'rails'
 require 'action_controller'
-require 'active_record'
 require 'active_support'
 
 # Captcha-Plugin for Rails
@@ -114,7 +113,7 @@ module EasyCaptcha
     # called by rails after initialize
     def init
       require 'easy_captcha/routes'
-      ActiveRecord::Base.send :include, ModelHelpers
+      ActiveRecord::Base.send :include, ModelHelpers if defined?(ActiveRecord::Base)
       ActionController::Base.send :include, ControllerHelpers
       ActionView::Base.send :include, ViewHelpers
 
@@ -126,6 +125,3 @@ module EasyCaptcha
 end
 
 EasyCaptcha.init
-
-
-
