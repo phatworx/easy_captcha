@@ -67,7 +67,7 @@ module EasyCaptcha
         end
 
         # Render the text in the image
-        canvas.annotate(Magick::Draw.new, 0, 0, 0, 0, code) {
+        Magick::Draw.new.annotate(canvas, 0, 0, 0, 0, code) {
           self.gravity     = Magick::CenterGravity
           self.font        = config.font
           self.font_weight = Magick::LighterWeight
@@ -88,7 +88,7 @@ module EasyCaptcha
         canvas = canvas.wave(rand(a.last - a.first) + a.first, rand(w.last - w.first) + w.first) if config.wave?
 
         # Sketch
-        canvas = canvas.sketch(config.sketch_radius, config.sketch_sigma, rand(180)) if config.sketch?
+        canvas = canvas.sketch(config.sketch_radius, config.sketch_sigma, rand(180)) if config.sketch? && canvas.respond_to?('sketch')
 
         # Implode
         canvas = canvas.implode(config.implode.to_f) if config.implode.is_a? Float
@@ -110,7 +110,7 @@ module EasyCaptcha
         # ruby-1.9
         image = image.force_encoding 'UTF-8' if image.respond_to? :force_encoding
 
-        canvas.destroy!
+        canvas.destroy! if canvas.respond_to?('destroy!')
         image
       end
 
