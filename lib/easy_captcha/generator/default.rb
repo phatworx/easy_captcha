@@ -58,7 +58,7 @@ module EasyCaptcha
 
       # generate image
       def generate(code)
-        require 'RMagick' unless defined?(Magick)
+        require 'rmagick' unless defined?(Magick)
 
         config = self
         canvas = Magick::Image.new(EasyCaptcha.image_width, EasyCaptcha.image_height) do |variable|
