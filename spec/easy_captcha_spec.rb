@@ -47,7 +47,7 @@ describe EasyCaptcha do
       end
     end
 
-    it 'sould not cache' do
+    it 'should not cache' do
       EasyCaptcha.cache?.should be_false
     end
 
