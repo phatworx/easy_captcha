@@ -5,10 +5,25 @@ describe EasyCaptcha::Espeak do
   context 'check default values' do
     subject { EasyCaptcha::Espeak.new }
 
-    its(:amplitude) { (80..120).should include(subject.amplitude) }
-    its(:pitch) { (30..70).should include(subject.pitch) }
-    its(:gap) { should eq 80 }
-    its(:voice) { should be_nil }
+    describe '#amplitude' do
+      subject { super().amplitude }
+      it { (80..120).should include(subject.amplitude) }
+    end
+
+    describe '#pitch' do
+      subject { super().pitch }
+      it { (30..70).should include(subject.pitch) }
+    end
+
+    describe '#gap' do
+      subject { super().gap }
+      it { is_expected.to eq 80 }
+    end
+
+    describe '#voice' do
+      subject { super().voice }
+      it { is_expected.to be_nil }
+    end
   end
 
   context 'check config: voices' do
@@ -18,6 +33,6 @@ describe EasyCaptcha::Espeak do
         config.voice = voices
       end
     end
-    it { voices.should include(subject.voice) }
+    it { expect(voices).to include(subject.voice) }
   end
 end
