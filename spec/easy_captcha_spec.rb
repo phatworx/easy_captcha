@@ -48,11 +48,11 @@ describe EasyCaptcha do
     end
 
     it 'sould not cache' do
-      EasyCaptcha.cache?.should be_false
+      expect(EasyCaptcha.cache?).to be_falsey
     end
 
     it 'should have default generator' do
-      EasyCaptcha.generator.should be_an(EasyCaptcha::Generator::Default)
+      expect(EasyCaptcha.generator).to be_an(EasyCaptcha::Generator::Default)
     end
 
     describe :depracations do
@@ -102,12 +102,12 @@ describe EasyCaptcha do
           :image_background_color, :sketch, :sketch_radius, :sketch_sigma, :wave,
           :wave_length, :wave_amplitude, :implode, :blur, :blur_radius, :blur_sigma
         ].each do |method|
-          EasyCaptcha.generator.send(method).should_not be_nil
+          expect(EasyCaptcha.generator.send(method)).not_to be_nil
         end
       end
 
       it 'method_missing should call normal on non depracations' do
-        -> { EasyCaptcha.send('a_missing_method') }.should raise_error
+        expect { EasyCaptcha.send('a_missing_method') }.to raise_error
       end
     end
   end
