@@ -1,7 +1,6 @@
 = EasyCaptcha
-A simple captcha implementation for rails 3 based on rmagick
-
-Tested with Rails 3.2.8
+A simple captcha implementation for rails based on rmagick.
+It is a fork with rails 5 support.
 
 https://travis-ci.org/phatworx/easy_captcha.png
 
