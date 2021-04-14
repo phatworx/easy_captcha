@@ -61,7 +61,7 @@ module EasyCaptcha
         require 'rmagick' unless defined?(Magick)
 
         config = self
-        canvas = Magick::Image.new(EasyCaptcha.image_width, EasyCaptcha.image_height) do |variable|
+        canvas = Magick::Image.new(EasyCaptcha.image_width, EasyCaptcha.image_height) do
           self.background_color = config.image_background_color unless config.image_background_color.nil?
           self.background_color = 'none' if config.background_image.present?
         end
